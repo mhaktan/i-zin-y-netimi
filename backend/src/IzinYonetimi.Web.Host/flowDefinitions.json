@@ -1,0 +1,192 @@
+[
+  {
+    "id": "flow-LeaveRequest-approval",
+    "name": "LeaveRequest Approval Flow",
+    "description": "Auto-generated approval flow for LeaveRequest. Customize email templates and add conditions as needed.",
+    "resourceName": "LeaveRequest",
+    "enabled": true,
+    "variables": [
+      {
+        "name": "assigneeEmail",
+        "type": "string",
+        "defaultValue": ""
+      },
+      {
+        "name": "creatorEmail",
+        "type": "string",
+        "defaultValue": ""
+      },
+      {
+        "name": "departmentEmails",
+        "type": "string",
+        "defaultValue": ""
+      },
+      {
+        "name": "formLink",
+        "type": "string",
+        "defaultValue": ""
+      }
+    ],
+    "nodes": [
+      {
+        "id": "LeaveRequest-approval-trigger",
+        "type": "trigger",
+        "label": "On LeaveRequest Submit",
+        "position": {
+          "x": 300,
+          "y": 50
+        },
+        "trigger": {
+          "type": "on-field-change",
+          "resourceName": "LeaveRequest",
+          "fieldName": "status"
+        }
+      },
+      {
+        "id": "LeaveRequest-approval-condition",
+        "type": "condition",
+        "label": "Status = PendingHRApproval?",
+        "position": {
+          "x": 300,
+          "y": 160
+        },
+        "condition": {
+          "logic": "and",
+          "rules": [
+            {
+              "field": "triggerData.status",
+              "operator": "equals",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      {
+        "id": "LeaveRequest-approval-approval",
+        "type": "approval",
+        "label": "LeaveRequest Approval",
+        "position": {
+          "x": 300,
+          "y": 280
+        },
+        "approval": {
+          "steps": [
+            {
+              "name": "İK Onayı",
+              "assigneeType": "role",
+              "assigneeValue": "HRSpecialist",
+              "actions": [
+                {
+                  "label": "Onayla",
+                  "type": "approve"
+                },
+                {
+                  "label": "Revize İste",
+                  "type": "revise",
+                  "requiredFields": [
+                    "revisionNote"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Yönetici Onayı",
+              "assigneeType": "field",
+              "assigneeValue": "managerId",
+              "actions": [
+                {
+                  "label": "Onayla",
+                  "type": "approve"
+                },
+                {
+                  "label": "Revize İste",
+                  "type": "revise",
+                  "requiredFields": [
+                    "revisionNote"
+                  ]
+                }
+              ]
+            }
+          ],
+          "trackRevisionHistory": true,
+          "onCompleteEvent": "LeaveRequest-approval-completed"
+        }
+      },
+      {
+        "id": "LeaveRequest-approval-email",
+        "type": "action",
+        "label": "Send Approval Email",
+        "position": {
+          "x": 300,
+          "y": 400
+        },
+        "action": {
+          "type": "send-email",
+          "config": {
+            "to": "{{assigneeEmail}}",
+            "subject": "İzin Talebi — Onayınızı Bekliyor",
+            "body": "<p>Sayın onaylayıcı,</p><p>Sisteme yeni bir izin talebi iletilmiştir. Onayınızı beklemektedir.</p>",
+            "contentType": "html"
+          }
+        }
+      },
+      {
+        "id": "LeaveRequest-approval-completion-trigger",
+        "type": "trigger",
+        "label": "On LeaveRequest Approved",
+        "position": {
+          "x": 700,
+          "y": 50
+        },
+        "trigger": {
+          "type": "manual",
+          "resourceName": "LeaveRequest"
+        }
+      },
+      {
+        "id": "LeaveRequest-approval-completion-email",
+        "type": "action",
+        "label": "Send Completion Email",
+        "position": {
+          "x": 700,
+          "y": 160
+        },
+        "action": {
+          "type": "send-email",
+          "config": {
+            "to": "{{creatorEmail}}",
+            "cc": "{{departmentEmails}}",
+            "subject": "{{triggerData.formNo}} — Tum onaylar tamamlandi",
+            "body": "<p>{{triggerData.formNo}} numarali formun onay sureci tamamlanmistir.</p>",
+            "contentType": "html"
+          }
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "gen_1793140192055_5",
+        "sourceNodeId": "LeaveRequest-approval-trigger",
+        "targetNodeId": "LeaveRequest-approval-condition"
+      },
+      {
+        "id": "gen_1793140192055_6",
+        "sourceNodeId": "LeaveRequest-approval-condition",
+        "targetNodeId": "LeaveRequest-approval-approval",
+        "branch": "true"
+      },
+      {
+        "id": "gen_1793140192055_7",
+        "sourceNodeId": "LeaveRequest-approval-approval",
+        "targetNodeId": "LeaveRequest-approval-email"
+      },
+      {
+        "id": "gen_1793140192055_8",
+        "sourceNodeId": "LeaveRequest-approval-completion-trigger",
+        "targetNodeId": "LeaveRequest-approval-completion-email"
+      }
+    ],
+    "createdAt": "2026-10-27T22:29:52.054Z",
+    "updatedAt": "2026-10-27T22:29:52.054Z"
+  }
+]

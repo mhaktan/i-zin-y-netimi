@@ -1,0 +1,268 @@
+{
+  "id": "report-leaveRequest-1793140192566",
+  "name": "İzin Talep Formu",
+  "orientation": "portrait",
+  "pageSize": "a4",
+  "elements": [
+    {
+      "id": "pdf-mvr9dfli-17",
+      "type": "header",
+      "x": 20,
+      "y": 25,
+      "width": 170,
+      "height": 10,
+      "props": {
+        "text": "İzin Talep Formu",
+        "fontSize": 16,
+        "fontWeight": "bold"
+      }
+    },
+    {
+      "id": "pdf-mvr9dfli-18",
+      "type": "divider",
+      "x": 20,
+      "y": 39,
+      "width": 170,
+      "height": 2,
+      "props": {
+        "lineColor": "#999999"
+      }
+    },
+    {
+      "id": "pdf-mvr9dfli-19",
+      "type": "textbox",
+      "x": 20,
+      "y": 45,
+      "width": 170,
+      "height": 7,
+      "props": {
+        "text": "Talep Bilgileri",
+        "fontSize": 12,
+        "fontWeight": "bold"
+      }
+    },
+    {
+      "id": "pdf-mvr9dfli-20",
+      "type": "textbox",
+      "x": 20,
+      "y": 56,
+      "width": 50,
+      "height": 6,
+      "props": {
+        "text": "Leave Type",
+        "fontSize": 10,
+        "fontWeight": "bold"
+      }
+    },
+    {
+      "id": "pdf-mvr9dfli-21",
+      "type": "textbox",
+      "x": 72,
+      "y": 56,
+      "width": 118,
+      "height": 6,
+      "props": {
+        "text": "",
+        "binding": "data.leaveType",
+        "fontSize": 10
+      }
+    },
+    {
+      "id": "pdf-mvr9dfli-22",
+      "type": "textbox",
+      "x": 20,
+      "y": 66,
+      "width": 50,
+      "height": 6,
+      "props": {
+        "text": "Start Date",
+        "fontSize": 10,
+        "fontWeight": "bold"
+      }
+    },
+    {
+      "id": "pdf-mvr9dfli-23",
+      "type": "textbox",
+      "x": 72,
+      "y": 66,
+      "width": 118,
+      "height": 6,
+      "props": {
+        "text": "",
+        "binding": "data.startDate",
+        "fontSize": 10
+      }
+    },
+    {
+      "id": "pdf-mvr9dfli-24",
+      "type": "textbox",
+      "x": 20,
+      "y": 76,
+      "width": 50,
+      "height": 6,
+      "props": {
+        "text": "End Date",
+        "fontSize": 10,
+        "fontWeight": "bold"
+      }
+    },
+    {
+      "id": "pdf-mvr9dfli-25",
+      "type": "textbox",
+      "x": 72,
+      "y": 76,
+      "width": 118,
+      "height": 6,
+      "props": {
+        "text": "",
+        "binding": "data.endDate",
+        "fontSize": 10
+      }
+    },
+    {
+      "id": "pdf-mvr9dfli-26",
+      "type": "textbox",
+      "x": 20,
+      "y": 86,
+      "width": 50,
+      "height": 6,
+      "props": {
+        "text": "Total Days",
+        "fontSize": 10,
+        "fontWeight": "bold"
+      }
+    },
+    {
+      "id": "pdf-mvr9dfli-27",
+      "type": "textbox",
+      "x": 72,
+      "y": 86,
+      "width": 118,
+      "height": 6,
+      "props": {
+        "text": "",
+        "binding": "data.totalDays",
+        "fontSize": 10
+      }
+    },
+    {
+      "id": "pdf-mvr9dfli-28",
+      "type": "textbox",
+      "x": 20,
+      "y": 96,
+      "width": 50,
+      "height": 6,
+      "props": {
+        "text": "Reason",
+        "fontSize": 10,
+        "fontWeight": "bold"
+      }
+    },
+    {
+      "id": "pdf-mvr9dfli-29",
+      "type": "textbox",
+      "x": 72,
+      "y": 96,
+      "width": 118,
+      "height": 6,
+      "props": {
+        "text": "",
+        "binding": "data.reason",
+        "fontSize": 10
+      }
+    },
+    {
+      "id": "pdf-mvr9dfli-30",
+      "type": "textbox",
+      "x": 20,
+      "y": 106,
+      "width": 50,
+      "height": 6,
+      "props": {
+        "text": "Status",
+        "fontSize": 10,
+        "fontWeight": "bold"
+      }
+    },
+    {
+      "id": "pdf-mvr9dfli-31",
+      "type": "textbox",
+      "x": 72,
+      "y": 106,
+      "width": 118,
+      "height": 6,
+      "props": {
+        "text": "",
+        "binding": "data.status",
+        "fontSize": 10
+      }
+    },
+    {
+      "id": "pdf-mvr9dfli-32",
+      "type": "textbox",
+      "x": 20,
+      "y": 118,
+      "width": 170,
+      "height": 7,
+      "props": {
+        "text": "Onay Geçmişi",
+        "fontSize": 12,
+        "fontWeight": "bold"
+      }
+    },
+    {
+      "id": "pdf-mvr9dfli-33",
+      "type": "table",
+      "x": 20,
+      "y": 129,
+      "width": 170,
+      "height": 56,
+      "props": {
+        "binding": "approvalHistory",
+        "columns": [
+          {
+            "key": "stepName",
+            "label": "Adım",
+            "width": 45
+          },
+          {
+            "key": "action",
+            "label": "Aksiyon",
+            "width": 30
+          },
+          {
+            "key": "userName",
+            "label": "Kullanıcı",
+            "width": 45
+          },
+          {
+            "key": "actionDate",
+            "label": "Tarih",
+            "width": 50
+          }
+        ],
+        "headerBgColor": "#f0f0f0",
+        "borderColor": "#cccccc",
+        "rowHeight": 7
+      }
+    }
+  ],
+  "apiBinding": {
+    "method": "GET",
+    "url": "api/services/app/LeaveRequest/GetReportData?id={{id}}",
+    "params": [
+      {
+        "name": "id"
+      }
+    ]
+  },
+  "headerConfig": {
+    "enabled": true,
+    "height": 15,
+    "text": "İzin Talep Formu",
+    "fontSize": 9
+  },
+  "pageNumberConfig": {
+    "enabled": true
+  }
+}

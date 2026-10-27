@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>IzinYonetimi.Tests</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.*" />
+    <PackageReference Include="xunit" Version="2.*" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.*" />
+    <PackageReference Include="Moq" Version="4.*" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.*" />
+    <PackageReference Include="FluentAssertions" Version="7.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\IzinYonetimi.Core\IzinYonetimi.Core.csproj" />
+    <ProjectReference Include="..\..\src\IzinYonetimi.Application\IzinYonetimi.Application.csproj" />
+    <ProjectReference Include="..\..\src\IzinYonetimi.EntityFrameworkCore\IzinYonetimi.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+</Project>

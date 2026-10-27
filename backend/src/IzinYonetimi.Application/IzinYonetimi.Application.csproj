@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>IzinYonetimi</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Abp" Version="8.*" />
+    <PackageReference Include="Abp.AutoMapper" Version="8.*" />
+    <!-- EF Core for async LINQ extensions used by Role/User AppServices -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.*" />
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Cronos" Version="0.8.4" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.*" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IzinYonetimi.Core\IzinYonetimi.Core.csproj" />
+  </ItemGroup>
+</Project>
